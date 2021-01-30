@@ -10,6 +10,14 @@ app.get("/user", function (req, res) {
     users: mockUserData,
   });
 });
+
+app.get("/user/:id", function (req, res) {
+  res.json({
+    success: true,
+    message: "got one user",
+    user: req.params.id,
+  });
+});
 app.listen(8000, function () {
   console.log("Server is running");
 });
