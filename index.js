@@ -1,7 +1,11 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const cors = require("cors");
+const PORT = process.env.PORT || 5000
 
+
+app.use(cors());
 app.use(bodyParser.json());
 
 const mockUserData = [{ name: "essa" }, { name: "fadi" }];
@@ -60,6 +64,6 @@ app.post("/login", function (req, res) {
   }
 });
 
-app.listen(3000, function () {
+app.listen(PORT, function () {
   console.log("Server is running");
 });

@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -18,8 +18,11 @@
     "url": "https://github.com/essasabbagh/node-express-course/issues"
   },
   "homepage": "https://github.com/essasabbagh/node-express-course#readme",
+  "engines": {
+    "node": "16.x"
+  },
   "dependencies": {
-    "express": "^4.17.3",
-    "nodemon": "^2.0.7"
+    "cors": "^2.8.5",
+    "express": "^4.17.3"
   }
 }
