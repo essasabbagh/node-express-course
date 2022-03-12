@@ -12,15 +12,18 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get("/users", function (req, res) {
+app.get("/users", auth, (req, res) => {
   res.json({
     success: true,
     message: "Sucsessfuly got user, Nice!",
     users: mockUserData,
   });
+  //   console.log(req.originalUrl);
+  //   console.log(req.url);
+  //   console.log(req.baseUrl);
 });
 
-app.get("/users/:id", function (req, res) {
+app.get("/users/:id", (req, res) => {
   res.json({
     success: true,
     message: "got one user",
@@ -28,6 +31,14 @@ app.get("/users/:id", function (req, res) {
   });
 });
 
+function auth(req, res, next) {
+  if (req.query.admin === "essa") {
+    console.log("auth", req.originalUrl);
+    next();
+  } else {
+    console.log("nooooo");
+  }
+}
 app.post("/login", function (req, res) {
   const username = req.body.username;
   const password = req.body.password;
@@ -48,6 +59,7 @@ app.post("/login", function (req, res) {
     });
   }
 });
-app.listen(8000, function () {
-  console.log("Server is running on port: 8000");
+
+app.listen(3000, function () {
+  console.log("Server is running");
 });
